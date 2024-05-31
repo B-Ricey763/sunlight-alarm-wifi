@@ -15,8 +15,8 @@
 #define SERVER_IP "http://worldtimeapi.org/api/timezone/Europe/Berlin"
 
 #ifndef STASSID
-#define STASSID "Vodafone-7B1C"
-#define STAPSK "psFk7h7anZszL444"
+#define STASSID "YOUR-SSID"
+#define STAPSK "YOUR-WIFI-PASSWORD"
 #endif
 
 #define RISE_HOUR 8
