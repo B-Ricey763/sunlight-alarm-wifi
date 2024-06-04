@@ -28,6 +28,8 @@
 
 Servo switchServo; 
 
+int lastPerformedDayOfYear = -1; 
+
 void clickSwitch() {
   switchServo.write(FLIP_ANGLE);
   delay(250);
@@ -83,11 +85,13 @@ void loop() {
         String datetime = doc["datetime"];
         int hour = datetime.substring(11, 14).toInt();
         int minute = datetime.substring(14, 17).toInt();
+        int dayOfYear = doc["day_of_year"];
         Serial.printf("CURRENT TIME: %02d:%02d\n", hour, minute);
 
-        if (hour == RISE_HOUR && minute == RISE_MINUTE) {
+        if (hour == RISE_HOUR && minute == RISE_MINUTE && dayOfYear != lastPerformedDayOfYear) {
           Serial.println("RISE AND SHINE: OPENING WINDOW...");
           clickSwitch();
+          lastPerformedDayOfYear = dayOfYear;
         }
       } else {
         Serial.println("received error:\n<<");
